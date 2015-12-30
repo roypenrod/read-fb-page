@@ -13,14 +13,19 @@ var users = require('./routes/users');
 
 var app = express();
 
-// load node-facebook
+// load Thuzi/facebook-node-sdk (Github)
 var FB = require('fb');
+
+var Step = require('step');
 
 // sets the node-facebook Access Token to our App Token
 FB.setAccessToken(process.env.APP_TOKEN);
 
 // makes FB available to other modules
 app.set('FB', FB);
+
+// makes Step available to other modules
+app.set('Step', Step);
 
 
 // view engine setup
