@@ -13,6 +13,16 @@ var users = require('./routes/users');
 
 var app = express();
 
+// load node-facebook
+var FB = require('fb');
+
+// sets the node-facebook Access Token to our App Token
+FB.setAccessToken(process.env.APP_TOKEN);
+
+// makes FB available to other modules
+app.set('FB', FB);
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
