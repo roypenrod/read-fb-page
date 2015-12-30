@@ -10,31 +10,34 @@ router.get('/', function(req, res, next) {
     var FB = req.app.get('FB');
                 
     // runs the FB Graph API call and handles the response
-    FB.api('corebrewery', { fields: ['id', 'name', 'mission'] }, function (res) {
-        if(!res || res.error) {
-            console.log(!res ? 'error occurred' : res.error);
+    FB.api('corebrewery', { fields: ['id', 'name', 'mission'] }, function (jsonRes) {
+        if(!jsonRes || jsonRes.error) {
+            console.log(!jsonRes ? 'error occurred' : jsonRes.error);
             return;
         }
         console.log('==========================');
-        console.log("inside API Call(res.id): " + res.id);
-        console.log("inside API Call(res.name): " + res.name);
-        console.log("inside API Call(res.mission:): ");
-        console.log(res.mission);
+        console.log("inside API Call(jsonRes.id): " + jsonRes.id);
+        console.log("inside API Call(jsonRes.name): " + jsonRes.name);
+        console.log("inside API Call(jsonRes.mission:): ");
+        console.log(jsonRes.mission);
         console.log(' ');
-        console.log("inside API Call(res): ");
-        console.log(res);
+        console.log("inside API Call(jsonRes): ");
+        console.log(jsonRes);
         console.log(' ');
-        console.log('==========================');            
+        console.log('==========================');  
+        
+        req.app.set('jsonRes', jsonRes);
        
     });
     
+    var jsonData = req.app.get('jsonRes');
     
     console.log("----------------------------");   
-    console.log("outside API Call(res): ");
-    console.log(res);
+    console.log("outside API Call(jsonData): ");
+    console.log(jsonData);
     console.log("----------------------------");
-    console.log("outside API Call (res.name): " + res.name);    
-    res.render('index', { title: 'Connect to FB API', name: res.name, mission: res.mission });
+    console.log("outside API Call (res.name): " + jsonData.name);    
+    res.render('index', { title: 'Connect to FB API', name: jsonData.name, mission: jsonData.mission });
     
 });
 
