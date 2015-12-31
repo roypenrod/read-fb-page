@@ -161,11 +161,16 @@ h3 {
   font-size: 14pt;
   padding-left: 20px;
 }
-p {
+p,
+ul {
   width: 80%;
   font-family: monospace;
   font-weight: normal;
   font-size: 12pt;
   margin: 20px auto;
   padding-left: 40px;
+}
+li {
+  margin-left: 60px;
+  list-style: disc;
 }
