@@ -139,6 +139,19 @@ div#sidebar img.recent-photo {
     padding: 0.5em;    
 }
 
+div#footer {
+    margin: 5em auto 3em;
+    text-align: center;
+    font-size: 14px;    
+}
+
+div#footer p {
+    border-width: 1px 0 0 0;
+    border-style: solid;
+    border-color: #666666;
+    padding-top: 1em;
+}
+
 
 
 /*************************************************************************
@@ -201,6 +214,10 @@ div#sidebar img.recent-photo {
     
     div#sidebar h3 {
         margin-top: 0;
+    }
+    
+    div#footer {
+        text-align: left;
     }
     
 /*
