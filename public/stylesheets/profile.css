@@ -1,0 +1,214 @@
+/*************************************************************************
+
+  Site:  roypenrod.com
+  Project: read-fb-oage
+  Module: profile.css
+  Author:  Roy Penrod
+  
+  Purpose:  Contains custom CSS to override the default Bootstrap styles
+  for the profile page.
+
+**************************************************************************/
+
+div#header {
+    border-color: #000;
+    border-style: solid;
+    border-width: 8px 0 4px;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding-top: 1em;
+}
+
+img#logo {
+    width: 50px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+div#name-and-category {
+    width: calc(100% - 50px);
+    display: inline-block;    
+    margin: 0;
+    padding: 0;
+}
+
+div#name-and-category h1 {
+    margin-top: 0;
+    margin-left: 10px;
+}
+
+div#name-and-category h4 {
+    margin-top: 0;
+    margin-left: 50px;
+    color: #666666;
+}
+
+.border-me {
+    border: 2px solid red;
+}
+
+.border-me-blue {
+    border: 2px solid blue;
+}
+
+div#profile .row {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div#sidebar {
+    margin-top: 2em;
+}
+
+div#main-content h3,
+div#sidebar h3 {
+    color: #E06528;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: #E06528;
+}
+
+h3#firstSection {
+    margin-top: 0;
+}
+
+img#main-photo {
+    width: 100%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000000;
+    padding: 0.5em;    
+    margin-bottom: 1em;    
+    margin-top: 0.5em;
+}
+
+ul#awards li {
+    padding-bottom: 0.5em;
+    font-size: 14px;
+}
+
+div#sidebar div#stats {
+    margin-bottom: 2em;
+}
+
+div#sidebar div#stats p {
+    text-align: center;
+    font-size: 2em;
+}
+
+div#sidebar div#stats span.stat-count {
+    color: #434DB0;
+    font-weight: bold;
+}
+
+div#sidebar div#stats span.stat-name {
+    font-size: 1em;
+    font-style: italic;
+    color: #666666;
+}
+
+div#sidebar ul.fa-ul {
+    font-size: 1em;    
+}
+
+
+div#sidebar i.fa {
+    display: inline-block;
+    margin-right: 5px;
+    color: #666666;
+}
+
+div#sidebar h2#call-to-action {
+    text-align: center;
+    background-color: #DBE3FF;
+    padding-top: 1.25em;
+    padding-bottom: 1.25em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+
+
+/*************************************************************************
+
+  MEDIA QUERIES
+
+**************************************************************************/
+
+
+@media (min-width: 400px) {
+        
+    img#main-photo {
+        width: 60%;
+        float: right;        
+        margin-left: 1em;
+        margin-bottom: 0.5em;    
+        margin-top: 0.5em;
+    }
+}
+
+
+@media (min-width: 500px) {
+    
+    div#profile p, 
+    ul#awards li,
+    div#sidebar ul.fa-ul {
+        font-size: 1.2em;
+    }
+    
+}
+
+
+@media (min-width: 575px) {
+    
+    img#main-photo {
+        padding: 0.75em;;
+    }
+}
+
+
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    
+/*
+    div#main-content {
+        border-width: 0 0 0 0;
+        border-style: solid;
+        border-color: #E57A44;
+        padding-right: 2em;
+    }    
+*/
+
+    div#sidebar {
+        margin-top: 0;                
+    }
+    
+    div#sidebar h3 {
+        margin-top: 0;
+    }
+    
+/*
+    div#sidebar h2#call-to-action {
+        text-align: center;
+        background-color: #DBE3FF;
+    }
+*/
+}
+
+
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+
+    div#profile p, 
+    ul#awards li,
+    div#sidebar ul.fa-ul {
+        font-size: 1.4em;
+    }
+}
+
+
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  }

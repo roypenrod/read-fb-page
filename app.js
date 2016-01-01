@@ -27,6 +27,9 @@ app.set('FB', FB);
 // makes Step available to other modules
 app.set('Step', Step);
 
+// make available to other module
+app.set('CORE_MAIN_PHOTO_URL', 'https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xpa1/t31.0-8/12241025_1018563221529029_1427319889957226929_o.jpg');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

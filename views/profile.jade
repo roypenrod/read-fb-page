@@ -1,0 +1,65 @@
+extends layout
+
+block content
+  div(id="profile" class="container")
+      div(id="header" class="container")
+          img(id="logo" src="#{pictureURL}")
+          div(id="name-and-category" class="container")
+              h1 #{name}
+              h4 
+                  em #{category[0]} -- #{category[1]}
+      div(class="row")
+          div(id="main-content" class="col-sm-8") 
+              h3(id="firstSection") 
+                  em Company Overview
+              img(id="main-photo" src="#{mainPhotoURL}")                  
+              each paragraph in companyOverview
+                  p #{paragraph}
+              h3
+                  em Mission
+              p #{mission}
+              h3
+                  em Products
+              p #{products}
+              h3
+                  em Awards
+              ul(id="awards") 
+                      each val in awards
+                          li #{val}            
+          div(id="sidebar" class="col-sm-4")               
+              div(id="stats")
+                  p 
+                      span(class="stat-count") #{likes} 
+                      span(class="stat-name") likes
+                  p 
+                      span(class="stat-count") #{visits} 
+                      span(class="stat-name") visits
+              h3 Contact Info
+              ul(class="fa-ul")
+                  li
+                      i(class="fa-li fa fa-globe")
+                      a(href="#{websiteURL}" target="_blank") website    
+                  li
+                      i(class="fa-li fa fa-facebook-square") 
+                      a(href="#{fbURL}" target="_blank") facebook
+              ul(class="fa-ul")
+                  li 
+                      i(class="fa-li fa fa-envelope-o")
+                      span #{email}
+              ul(class="fa-ul")
+                  li 
+                      i(class="fa-li fa fa-phone")
+                      span #{phone}
+              ul(class="fa-ul")
+                  li
+                      i(class="fa-li fa fa-road")
+                      span #{streetAddress} <br /> #{city} #{state} #{zipCode}
+              h2(id="call-to-action") 
+                  a(href="#{reviewsURL}" target="_blank") Check Out the Reviews on Facebook
+              
+                      
+                                                  
+                      
+          
+
+              
