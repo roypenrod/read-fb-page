@@ -120,11 +120,23 @@ div#sidebar i.fa {
 
 div#sidebar h2#call-to-action {
     text-align: center;
-    background-color: #DBE3FF;
-    padding-top: 1.25em;
-    padding-bottom: 1.25em;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    background-color: #DBE3FF;    
+    padding: 1.25em 1em;
+    max-width: 480px;
+    margin: 1em auto;
+}
+
+div#sidebar img.recent-photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 480px;
+    max-height: 480px;
+    margin: 2em auto 3em;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000000;
+    padding: 0.5em;    
 }
 
 
@@ -161,9 +173,12 @@ div#sidebar h2#call-to-action {
 
 @media (min-width: 575px) {
     
-    img#main-photo {
+    img#main-photo,
+    div#sidebar img.recent-photo {
         padding: 0.75em;;
     }
+    
+    
 }
 
 
