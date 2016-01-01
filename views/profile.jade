@@ -1,6 +1,9 @@
 extends layout
 
 block content
+  div(class="alert alert-success" role="alert")
+      p The data for this profile page is pulled from the Facebook Graph API on the server using NodeJS with Express.&nbsp;&nbsp;     
+          a(class="btn btn-default" href="data" role="button" target="_blank") View Raw JSON Data
   div(id="profile" class="container")
       div(id="header" class="container")
           img(id="logo" src="#{pictureURL}")

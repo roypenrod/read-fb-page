@@ -3,6 +3,7 @@ var router = express.Router();
 
 var fbPageAlias = "corebrewery";
 
+
 // takes the category list from FB's JSON format
 // and returns it as an array of category names
 function fbExtractCategoryFromList(fbCategoryList) {
@@ -256,10 +257,143 @@ router.get('/', function(req, res, next) {
                                     recentPhoto1URL: recentPhoto1URL,
                                     recentPhoto2URL: recentPhoto2URL,
                                     recentPhoto3URL: recentPhoto3URL
-                                });
+            });
         }
     );    
     
+});
+
+
+
+/* GET home page */
+router.get('/data', function(req, res, next) { 
+    
+    
+    // accesses the vars exported in app.js
+    var FB = req.app.get('FB');
+    var Step = req.app.get('Step');
+        
+    // build the fields array here to make 
+    // code more readable
+    var fbApiFields = [
+        'id',
+        'name',
+        'picture',
+        'category_list',
+        'company_overview',
+        'mission',
+        'products',
+        'awards',
+        'website',
+        'link',
+        'emails',
+        'likes',
+        'were_here_count',
+        'location',
+        'phone'
+    ];
+    
+    Step(
+        // retrieves the Page data from FB in JSON format
+        function getPageData() {
+            
+            var self = this;
+            
+            // runs the FB Graph API call 
+            // receives the JSON file as a reponse
+            FB.api(fbPageAlias, { fields: fbApiFields }, function (jsonRes) {
+                if(!jsonRes || jsonRes.error) {                    
+                    self(new Error('Page Error: Problem with JSON data returned from FB.'));                    
+                } else {
+                    self(null, jsonRes);
+                }
+            });
+            
+        }, 
+        // retrieves the list of uploaded Photos from FB in JSON format
+        function getPhotoList(err, pageDataJSON) {
+            
+            var self = this;
+            
+            // runs the FB Graph API call 
+            // receives the JSON file as a reponse            
+            FB.api(fbPageAlias + '/photos?type=uploaded', function (jsonRes) {
+                if(!jsonRes || jsonRes.error) {                    
+                    self(new Error('PhotoID Error: Problem with JSON data returned from FB.'));                    
+                } else {
+                    self(null, pageDataJSON, jsonRes);
+                }       
+            });
+        },
+        // retrieves the most recent photo from FB in JSON format
+        function getRecentPhotoJSON1 (err, pageDataJSON, photoIdJSON) {
+            
+            var self = this;
+            
+            // runs the FB Graph API call
+            // receives the JSON file as a response
+            FB.api('/' + photoIdJSON.data[0].id, { fields: 'images' },  function (jsonRes) {
+                if(!jsonRes || jsonRes.error) {                    
+                    self(new Error('getRecentPhotoJSON1 Error: Problem with JSON data returned from FB.'));                    
+                } else {
+                    self(null, pageDataJSON, photoIdJSON, jsonRes);
+                }       
+            });
+            
+        },
+        // retrieves the second most recent photo from FB in JSON format
+        function getRecentPhotoJSON2(err, pageDataJSON, photoIdJSON, recentPhoto1JSON) {
+                        
+            var self = this;
+                        
+            // runs the FB Graph API call
+            // receives the JSON file as a response
+            FB.api('/' + photoIdJSON.data[1].id, { fields: 'images' },  function (jsonRes) {
+                if(!jsonRes || jsonRes.error) {                    
+                    self(new Error('getRecentPhotoJSON2 Error: Problem with JSON data returned from FB.'));                    
+                } else {
+                    self(null, pageDataJSON, photoIdJSON, recentPhoto1JSON, jsonRes);
+                }       
+            });
+                        
+        },
+        // retrieves the third most recent photo from FB in JSON format
+        function getRecentPhotoJSON3(err, pageDataJSON, photoIdJSON, recentPhoto1JSON, recentPhoto2JSON) {
+                        
+            var self = this;
+                        
+            // runs the FB Graph API call
+            // receives the JSON file as a response
+            FB.api('/' + photoIdJSON.data[2].id, { fields: 'images' },  function (jsonRes) {
+                if(!jsonRes || jsonRes.error) {                    
+                    self(new Error('getRecentPhotoJSON3 Error: Problem with JSON data returned from FB.'));                    
+                } else {
+                    self(null, pageDataJSON, photoIdJSON, recentPhoto1JSON, recentPhoto2JSON, jsonRes);
+                }       
+            });        
+        },
+        // processes the JSON data from FB
+        // renders it to the template
+        function processData(err, pageDataJSON, photoIdJSON, recentPhoto1JSON, recentPhoto2JSON, recentPhoto3JSON) {
+            
+            // sends all of the JSON data inside a JSON object
+            var jsonData = { jsonData: [
+                            { pageDataJSON: pageDataJSON },
+                            { photoIdJSON: photoIdJSON },
+                            { recentPhoto1JSON: recentPhoto1JSON },
+                            { recentPhoto2JSON: recentPhoto2JSON },
+                            { recentPhoto3JSON: recentPhoto3JSON }
+                            ]};
+            
+            
+            // send the JSON data to the browser 
+            res.status(200);
+            res.type('json');
+            res.send(jsonData);
+            res.end();
+        }
+    );    
+
 });
 
            
