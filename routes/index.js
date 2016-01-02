@@ -92,12 +92,7 @@ router.get('/', function(req, res, next) {
                 } else {
                     self(null, pageDataJSON, jsonRes);
                 }
-//                console.log('==========================');
-//                console.log(' ');
-//                console.log(jsonRes);
-//                console.log(' ');                
-//                console.log('==========================');  
-       
+
             });
         },
         // retrieves the most recent photo from FB in JSON format
@@ -113,11 +108,6 @@ router.get('/', function(req, res, next) {
                 } else {
                     self(null, pageDataJSON, photoIdJSON, jsonRes);
                 }
-//                console.log('==========================');
-//                console.log(' ');
-//                console.log(jsonRes);
-//                console.log(' ');                
-//                console.log('==========================');  
        
             });
             
@@ -135,11 +125,6 @@ router.get('/', function(req, res, next) {
                 } else {
                     self(null, pageDataJSON, photoIdJSON, recentPhoto1JSON, jsonRes);
                 }
-//                console.log('==========================');
-//                console.log(' ');
-//                console.log(jsonRes);
-//                console.log(' ');                
-//                console.log('==========================');  
        
             });
                         
@@ -157,39 +142,12 @@ router.get('/', function(req, res, next) {
                 } else {
                     self(null, pageDataJSON, photoIdJSON, recentPhoto1JSON, recentPhoto2JSON, jsonRes);
                 }
-//                console.log('==========================');
-//                console.log(' ');
-//                console.log(jsonRes);
-//                console.log(' ');                
-//                console.log('==========================');  
        
             });        
         },
         // processes the JSON data from FB
         // renders it to the template
         function processData(err, pageDataJSON, photoIdJSON, recentPhoto1JSON, recentPhoto2JSON, recentPhoto3JSON) {
-            
-//            console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!');
-//            console.log(' ');
-//            console.log(pageDataJSON);
-//            console.log(' ');
-//            console.log(' 000000000000000000000000 ');
-//            console.log(' ');
-//            console.log(photoIdJSON);
-//            console.log(' ');                
-//            console.log(' 000000000000000000000000 ');
-//            console.log(' ');
-//            console.log(recentPhoto1JSON);
-//            console.log(' ');                            
-//            console.log(' 000000000000000000000000 ');
-//            console.log(' ');
-//            console.log(recentPhoto2JSON);
-//            console.log(' ');   
-//            console.log(' 000000000000000000000000 ');
-//            console.log(' ');
-//            console.log(recentPhoto3JSON);
-//            console.log(' ');   
-//            console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!');  
             
             // break out the category list into new var
             var category = fbExtractCategoryFromList (pageDataJSON.category_list);

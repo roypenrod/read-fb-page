@@ -16,6 +16,7 @@ var app = express();
 // load Thuzi/facebook-node-sdk (Github)
 var FB = require('fb');
 
+// load Step to serialize the API functions
 var Step = require('step');
 
 // sets the node-facebook Access Token to our App Token
